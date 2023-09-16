@@ -25,32 +25,50 @@ public class ApplicationContextHolder implements ApplicationContextAware, Dispos
         applicationContext = null;
     }
 
+    /**
+     * 检查容器是否注入成功
+     */
     private static void checkApplicationContext() {
         if (null == applicationContext)
             throw new IllegalArgumentException("ApplicationContext is null, please start the spring container correctly");
     }
 
+    /**
+     * 获取容器
+     */
     public static ApplicationContext getApplicationContext() {
         checkApplicationContext();
         return applicationContext;
     }
 
+    /**
+     * 获取 Bean
+     */
     public static <T> T getBean(String name, Class<T> type) {
         checkApplicationContext();
         return applicationContext.getBean(name, type);
     }
 
+    /**
+     * 获取 Bean
+     */
     public static <T> T getBean(Class<T> clazz) {
         checkApplicationContext();
         Map<String, T> beanMaps = applicationContext.getBeansOfType(clazz);
         return !beanMaps.isEmpty() ? beanMaps.values().stream().findFirst().orElse(null) : null;
     }
 
+    /**
+     * Spring 容器销毁方法
+     */
     @Override
     public void destroy() throws Exception {
         clearHolder();
     }
 
+    /**
+     * ApplicationContext 感知
+     */
     @Override
     public void setApplicationContext(@NonNull ApplicationContext applicationContext) throws BeansException {
         ApplicationContextHolder.applicationContext = applicationContext;
