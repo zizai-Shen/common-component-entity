@@ -2,6 +2,12 @@ package tax.szz.common.entity.exception;
 
 import java.io.Serial;
 
+/**
+ * 作者：沈自在 <a href="https://www.szz.tax">Blog</a>
+ *
+ * @description 业务异常
+ * @date 2023/9/17
+ */
 public class BusinessException extends RuntimeException {
 
     @Serial
