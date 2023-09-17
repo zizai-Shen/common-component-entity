@@ -6,7 +6,7 @@ package tax.szz.common.entity.exception;
  * @description 通用错误码
  * @date 2023/9/17
  */
-public class CommonErrorCode {
+public class InternalErrorCode {
 
     /**
      * 成功
